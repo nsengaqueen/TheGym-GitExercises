@@ -1,4 +1,468 @@
-## Git Advanced Exercises 2
+## Git Advanced Exercises 1
+
+1. Missing File Fix:
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test4.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 8fae7631f217911a02944d0c779ad4ac70733c2a (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:58 2024 +0200
+
+    chore: Create third and fourth files
+
+commit b291a72408e1930e43124c031c5e25e0b9338e0d
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create another file
+
+commit 1438792869560a2da326bacbdab0e933984f2789
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create initial file
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git add test4.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git commit --amend --no-edit
+[main de09fdb] chore: Create third and fourth files
+ Date: Tue May 21 12:25:58 2024 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+ create mode 100644 test4.md
+
+ 2.Editing Commit History:
+ PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i HEAD~2
+[detached HEAD 971a241] chore: Create second file
+ Date: Tue May 21 12:25:57 2024 +0200
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test2.md
+Successfully rebased and updated refs/heads/main.
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 285f7adc918b6746722302de4f21b30782cc1019 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:58 2024 +0200
+
+    chore: Create third and fourth files
+
+commit 971a2418f40b6666e004a32d0271f1654a119262
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create second file
+
+commit 1438792869560a2da326bacbdab0e933984f2789
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create initial file
+
+ 3.Keeping History Tidy - Squashing Commits:
+ PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 285f7adc918b6746722302de4f21b30782cc1019 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:58 2024 +0200
+
+    chore: Create third and fourth files
+
+commit 971a2418f40b6666e004a32d0271f1654a119262
+Author: nsengaqueen <nsengaqueen123@gmail.com
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create second file
+
+commit 1438792869560a2da326bacbdab0e933984f2789
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: Create initial file
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i --root
+[detached HEAD 8248c41] chore: create the first two files
+ Date: Tue May 21 12:25:57 2024 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test1.md
+ create mode 100644 test2.md
+Successfully rebased and updated refs/heads/main.
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 443af88ee6445dfbdea1c18c748ef9649c699931 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:58 2024 +0200
+
+    chore: Create third and fourth files
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+ 4.Splitting a Commit:
+ PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 443af88ee6445dfbdea1c18c748ef9649c699931 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:58 2024 +0200
+
+    chore: Create third and fourth files
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i Head~1
+Stopped at 443af88...  chore: Create third and fourth files
+You can amend the commit now, with
+
+  git commit --amend
+
+Once you are satisfied with your changes, run
+
+  git rebase --continue
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git status
+interactive rebase in progress; onto 8248c41
+Last command done (1 command done):
+   edit 443af88 chore: Create third and fourth files
+No commands remaining.
+You are currently editing a commit while rebasing branch 'main' on '8248c41'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+nothing to commit, working tree clean
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git reset HEAD~
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git status
+interactive rebase in progress; onto 8248c41
+Last command done (1 command done):
+   edit 443af88 chore: Create third and fourth files
+No commands remaining.
+You are currently editing a commit while rebasing branch 'main' on '8248c41'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        test3.md
+        test4.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git add test3.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git commit -m"create third file"
+[detached HEAD 5b3e6ea] create third file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git add test4.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git commit -m"create fourth file"
+[detached HEAD 70851ec] create fourth file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test4.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main|REBASE 1/1)
+$ git rebase --continue
+Successfully rebased and updated refs/heads/main.
+
+5.Advanced Squashing:
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 70851ec1815948b8cbb01802a262de7556d0126d (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:50 2024 +0200
+
+    create fourth file
+
+commit 5b3e6ea4a031d2e8907ad24d1c57120641fa0c20
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third file
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i Head~2
+[detached HEAD 0a42925] create third and fourth files
+ Date: Tue May 21 13:49:08 2024 +0200
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 test3.md
+ create mode 100644 test4.md
+Successfully rebased and updated refs/heads/main.
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 0a4292517dc5890e0f987be44bfb5303ef1af7a5 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+6.Dropping a Commit:
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 945d29e56f70f52cd5405ebccc043974c803c512 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 14:19:33 2024 +0200
+pick 0a42925 create third and fourth files
+
+    Unwanted commit
+
+commit 0a4292517dc5890e0f987be44bfb5303ef1af7a5
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i Head~2
+Successfully rebased and updated refs/heads/main.
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 0a4292517dc5890e0f987be44bfb5303ef1af7a5 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+
+commit 8248c4197a22a90026987236bbd3c6a7cd55a5f4
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+7.Reordering Commits:
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git rebase -i --root
+Successfully rebased and updated refs/heads/main.
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit 077b3f71f611969c6f3d8ab2e0094e12ca73c0be (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit c305411b3a13778fb255b5b5f1f59002c7cca303
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+
+8.Cherry-Picking Commits:
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git checkout -b ft/branch
+Switched to a new branch 'ft/branch'
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (ft/branch)
+$ git add .
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (ft/branch)
+$  git commit -m"Implemented test 5"
+[ft/branch 6c1ac40] Implemented test 5
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test5.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (ft/branch)
+$ git log
+commit 6c1ac400dce5dd24ae1bbc8fba2eb408b1ba6630 (HEAD -> ft/branch)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 14:50:39 2024 +0200
+
+    Implemented test 5
+
+commit 077b3f71f611969c6f3d8ab2e0094e12ca73c0be (main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+:...skipping...
+commit 6c1ac400dce5dd24ae1bbc8fba2eb408b1ba6630 (HEAD -> ft/branch)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 14:50:39 2024 +0200
+
+    Implemented test 5
+
+commit 077b3f71f611969c6f3d8ab2e0094e12ca73c0be (main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit c305411b3a13778fb255b5b5f1f59002c7cca303
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (ft/branch)
+$ git checkout main
+Switched to branch 'main'
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git cherry-pick 6c1ac400dce5dd24ae1bbc8fba2eb408b1ba6630
+[main ff82239] Implemented test 5
+ Date: Tue May 21 14:50:39 2024 +0200
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test5.md
+
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log
+commit ff82239d7eb3bc4cb31c596567d84fce4031b4e0 (HEAD -> main)
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 14:50:39 2024 +0200
+
+    Implemented test 5
+
+commit 077b3f71f611969c6f3d8ab2e0094e12ca73c0be
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 12:25:57 2024 +0200
+
+    chore: create the first two files
+
+    chore: Create initial file
+
+    chore: Create second file
+
+commit c305411b3a13778fb255b5b5f1f59002c7cca303
+Author: nsengaqueen <nsengaqueen123@gmail.com>
+Date:   Tue May 21 13:49:08 2024 +0200
+
+    create third and fourth files
+
+    create fourth file
+9.Visualizing Commit History (Bonus):
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> (main)
+$ git log --graph
+* commit ff82239d7eb3bc4cb31c596567d84fce4031b4e0 (HEAD -> main)
+| Author: nsengaqueen <nsengaqueen123@gmail.com>
+| Date:   Tue May 21 14:50:39 2024 +0200
+| 
+|     Implemented test 5
+| 
+* commit 077b3f71f611969c6f3d8ab2e0094e12ca73c0be
+| Author: nsengaqueen <nsengaqueen123@gmail.com>
+| Date:   Tue May 21 12:25:57 2024 +0200
+| 
+|     chore: create the first two files
+|     
+|     chore: Create initial file
+|     
+|     chore: Create second file
+| 
+* commit c305411b3a13778fb255b5b5f1f59002c7cca303
+  Author: nsengaqueen <nsengaqueen123@gmail.com>
+  Date:   Tue May 21 13:49:08 2024 +0200
+  
+      create third and fourth files
+      
+      create fourth file
+
+
+
+
 PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git branch
 * master
 PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git branch ft/new-feature
@@ -276,9 +740,87 @@ Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at 239ab08 adding new.txt in new branchfromcommit
 
-## Git Advanced Exercises 2
+## Git Advanced Exercises 3
 1.Stashing Changes:
 PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git stash save "some stashed data in main"
 Saved working directory and index state On master: some stashed data in main
+
+2.Retrieving Stashed Changes:
+ git stash pop         
+On branch master
+Your branch is up to date with 'GitAdvancedExercises/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)    
+        modified:   README.md
+        modified:   new.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (26ecad9f277e8a7d91814edc8f2a9dbebbd8d33a)
+3.Branch Merging Conflicts (Continued)
+git add .
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git commit -m "adding conflicting changes"
+[feature-branch a7441ec] adding conflicting changes
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 file.md
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'GitAdvancedExercises/master'.
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git add file.md
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git commit -m "adding conflicts to main"
+[master 88b48c5] adding conflicts to main
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file.md
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git merge feature-branch
+Auto-merging file.md
+CONFLICT (add/add): Merge conflict in file.md
+Automatic merge failed; fix conflicts and then commit the result.
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 308 bytes | 308.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/nsengaqueen/TheGym-GitExercises.git
+   e3b95a2..88b48c5  master -> master
+
+ 
+ 4.Resolving Merge Conflicts with a Merge Tool:
+ git config --global merge.tool vimdiff
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git mergetool
+Merging:
+file.md
+
+Normal merge conflict for 'file.md':
+  {local}: created file
+  {remote}: created file
+3 files to edit
+
+7.
+git checkout master 
+Already on 'master'
+M       file.md
+M       new.txt
+Your branch is up to date with 'GitAdvancedExercises/master'.
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git tag v1.0
+8.Working with Tags:
+git tag
+v1.0
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git tag -d v1.0      
+Deleted tag 'v1.0' (was 88b48c5)
+9.Pushing Local Work to Remote Repositories
+   git push
+Everything up-to-date
+10.Pulling Changes from Remote Repositories:
+  
+  
+
+
+
+
+
 
 
