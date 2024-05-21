@@ -278,6 +278,7 @@ HEAD is now at 239ab08 adding new.txt in new branchfromcommit
 
 ## Git Advanced Exercises 2
 1.Stashing Changes:
-
+PS C:\Users\user\Desktop\THE GYM\TheGymGitexercises> git stash save "some stashed data in main"
+Saved working directory and index state On master: some stashed data in main
 
 
